@@ -1,2 +1,2 @@
 secrets: main.c secrets.h
-	gcc -o secrets main.c -lm
+	gcc -o secrets main.c -lSDL2
