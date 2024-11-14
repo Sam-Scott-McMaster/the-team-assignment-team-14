@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
     SDL_Event event;
 
 
-    SDL_Surface *test = IMG_Load("Test_Picture.png");
+    SDL_Surface *test = IMG_Load("images/Corkboard-Main.png");
     SDL_Texture *testTexture = SDL_CreateTextureFromSurface(renderer, test);
 
 
@@ -73,6 +73,8 @@ int main(int argc, char *argv[]) {
 
     } // end of while loop
 
+    SDL_DestroyWindow(window);
+    SDL_DestroyRenderer(renderer);
     SDL_Quit();
     IMG_Quit();
     exit(EXIT_SUCCESS);
