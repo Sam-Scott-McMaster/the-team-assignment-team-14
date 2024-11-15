@@ -1,6 +1,6 @@
 // Purpose: Secrets of Summerside.
 // Author: Tharny Elilvannan, McMaster University
-// Last Updated: Wednesday, November 13, 2024
+// Last Updated: Friday, November 15, 2024
 // This program uses the SDL and SDL_image libraries.
 
 #include <stdio.h>
@@ -37,6 +37,7 @@ int main(int argc, char *argv[]) {
 
     SDL_Surface *test = IMG_Load("images/Corkboard-Main.png");
     SDL_Texture *testTexture = SDL_CreateTextureFromSurface(renderer, test);
+    SDL_Rect rect1 = {100, 100, 100, 100};
 
 
     if (renderer == NULL) {
@@ -49,7 +50,9 @@ int main(int argc, char *argv[]) {
     SDL_Rect border = {0, 0, 2000, 1000};
     SDL_Rect corkboard = {50, 50, 1900, 900};
 
-    while (true) {
+    bool run = true;
+
+    while (run) {
 
         SDL_SetWindowResizable(window, SDL_FALSE);
         SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
@@ -70,6 +73,16 @@ int main(int argc, char *argv[]) {
         // display
         SDL_RenderPresent(renderer);
         SDL_Delay(5000);
+
+        while (SDL_PollEvent(&event)) {
+
+            if (event.type == SDL_QUIT) {
+
+                run = false;
+
+            } // end of if statement
+
+        } // end of while loop
 
     } // end of while loop
 
