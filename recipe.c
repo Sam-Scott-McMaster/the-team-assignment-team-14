@@ -2,7 +2,7 @@
  * 
  * This function will "enlarge" one of the clues that the user clicks on
  * Focuses on the recipe clue
- * on mac: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
+ * on mac before executing: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
  * McMaster University
  * 
@@ -28,7 +28,7 @@
 #define EXIT_FAILURE 1
 
 
-int main(int argc, char *argv[]) {
+void openRecipe() {
 
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 
@@ -80,8 +80,8 @@ int main(int argc, char *argv[]) {
 
         SDL_SetWindowResizable(window, SDL_FALSE);
         SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
-        SDL_SetWindowMouseGrab(window, SDL_FALSE);
-        SDL_SetWindowGrab(window, SDL_FALSE);
+        SDL_SetWindowMouseGrab(window, SDL_TRUE);
+        SDL_SetWindowGrab(window, SDL_TRUE);
         
         // draw border
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
@@ -132,6 +132,14 @@ int main(int argc, char *argv[]) {
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     IMG_Quit();
-    exit(EXIT_SUCCESS);
+    //exit(EXIT_SUCCESS);
 
-} // end of main function
+} 
+
+
+int main(int argc, char *argv[]){
+    openRecipe(); 
+
+
+
+}
