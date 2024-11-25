@@ -2,6 +2,7 @@
  * 
  * This function will "enlarge" one of the clues that the user clicks on
  * Focuses on the recipe clue
+ * on mac: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
  * McMaster University
  * 
@@ -25,12 +26,6 @@
 
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
-
-
-
-
-void 
-
 
 
 int main(int argc, char *argv[]) {
@@ -59,7 +54,7 @@ int main(int argc, char *argv[]) {
     }
 
     // make image
-    SDL_Surface * image = IMG_Load("recipe.png");
+    SDL_Surface * image = IMG_Load("images/recipe.png");
     SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(renderer, image);
 
     // download font
@@ -75,7 +70,7 @@ int main(int argc, char *argv[]) {
 
     SDL_Rect border = {0,0,1000, 800}; 
     SDL_Rect picture = {10, 10, 980, 780}; 
-    SDL_Rect button = {450, 720, 100, 25};
+    SDL_Rect button = {450, 750, 100, 25};
     SDL_Rect textBox = {button.x + 25 , button.y + 4, 50, 20}; 
     
 
