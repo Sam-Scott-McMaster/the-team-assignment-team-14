@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 
     } // end of if statement
 
-    SDL_Rect continueButton = {20, 20, 20, 20};
+    SDL_Rect continueButton = {800, 900, 400, 100};
 
     bool run = true;
 
