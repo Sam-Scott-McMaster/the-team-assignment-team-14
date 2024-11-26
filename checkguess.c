@@ -74,14 +74,14 @@ void checkguess() {
     SDL_Rect background = {10, 10, 580, 380}; 
 
     // draw buttons for each person
-    SDL_Rect shaunButton = {570, 200, 100, 50};
-    SDL_Rect shaunText = {shaunButton.x + 25 , shaunButton.y + 4, 50, 20}; 
+    SDL_Rect shaunButton = {450, 150, 100, 40};
+    SDL_Rect shaunText = {shaunButton.x + 25 , shaunButton.y + 8, 50, 20}; 
 
-    SDL_Rect glenButton = {370, 200, 100, 50};
-    SDL_Rect glenText = {glenButton.x + 25 , glenButton.y + 4, 50, 20}; 
+    SDL_Rect glenButton = {250, 150, 100, 40};
+    SDL_Rect glenText = {glenButton.x + 25 , glenButton.y + 8, 50, 20}; 
 
-    SDL_Rect claytonButton = {170, 200, 100, 50};
-    SDL_Rect claytonText = {claytonButton.x + 25 , claytonButton.y + 4, 50, 20}; 
+    SDL_Rect claytonButton = {50, 150, 100, 40};
+    SDL_Rect claytonText = {claytonButton.x + 25 , claytonButton.y + 8, 50, 20}; 
     
     bool run = true;
 
