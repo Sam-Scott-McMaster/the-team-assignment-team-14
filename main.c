@@ -1,6 +1,6 @@
 // Purpose: Secrets of Summerside.
 // Author: Tharny Elilvannan, McMaster University
-// Last Updated: Friday, November 15, 2024
+// Last Updated: Tuesday, November 26, 2024
 // This program uses the SDL and SDL_image libraries.
 
 #include <stdio.h>
