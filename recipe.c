@@ -54,7 +54,6 @@ void openRecipe() {
     }
 
     // make image
-    // make image
     SDL_Surface * image = IMG_Load("images/recipe.png");
     SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(renderer, image);
     // if (!image) {
@@ -68,7 +67,7 @@ void openRecipe() {
     //     return;
     // }
 
-
+    
     // download font
     TTF_Font *font = TTF_OpenFont("Dosis/static/Dosis-ExtraBold.ttf", 24); 
     if (!font){
