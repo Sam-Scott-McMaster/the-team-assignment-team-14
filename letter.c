@@ -6,7 +6,7 @@
 
 void Letter(SDL_Renderer *renderer) {
     // Creates a new window and renderer 
-    SDL_Window *newWindow = SDL_CreateWindow("Image Window", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
+    SDL_Window *newWindow = SDL_CreateWindow("Letter Clue", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
     SDL_Renderer *newRenderer = SDL_CreateRenderer(newWindow, -1, SDL_RENDERER_ACCELERATED);
 
     //displays image 
