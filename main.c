@@ -155,7 +155,7 @@ int main(int argc, char *argv[]) {
 
                                     openHelp();
 
-                                }
+                                } // end of if statement
 
                             } // end of if statement
 
