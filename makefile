@@ -8,7 +8,7 @@ guess: checkguess.c
 	gcc -o guess checkguess.c `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -F/Library/Frameworks -framework SDL2 -framework SDL2_image -framework SDL2_ttf -lm
 
 map: map.c
-    gcc -o map map.c `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -F/Library/Frameworks -framework SDL2 -framework SDL2_image -framework SDL2_ttf -lm
+	gcc -o map map.c `sdl2-config --libs --cflags` -ggdb3 -O0 --std=c99 -Wall -F/Library/Frameworks -framework SDL2 -framework SDL2_image -framework SDL2_ttf -lm
 
 letter:
 	gcc -o letter letter.c -lSDL2 -lSDL2_image -lSDL2_ttf 
