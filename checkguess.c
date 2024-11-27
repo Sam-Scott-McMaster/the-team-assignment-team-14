@@ -23,7 +23,7 @@
 #endif
 
 void checkguess() {
-    
+
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 
         fprintf(stderr, "%s\n", SDL_GetError());
@@ -56,6 +56,10 @@ void checkguess() {
     // make textboxes
     SDL_Color textColor = {0, 0, 0}; 
 
+    // Create "Who is the murderer?" title
+    SDL_Surface *title = TTF_RenderText_Solid(font, "Who is the murderer?", textColor); 
+    SDL_Texture *titleTexture = SDL_CreateTextureFromSurface(renderer, title);
+
     // text 1: Shaun
     SDL_Surface *shaun = TTF_RenderText_Solid(font, "Shaun", textColor); 
     SDL_Texture *shaunTexture = SDL_CreateTextureFromSurface(renderer, shaun); 
@@ -72,6 +76,8 @@ void checkguess() {
     // draw rectangles
     SDL_Rect border = {0,0,600, 400}; 
     SDL_Rect background = {10, 10, 580, 380}; 
+    SDL_Rect titleRect = {150, 20, 300, 40};
+
 
     // draw buttons for each person
     SDL_Rect shaunButton = {450, 150, 100, 40};
@@ -85,6 +91,10 @@ void checkguess() {
     
     bool run = true;
 
+    // Declare attempts variable
+    int attempts = 0;
+
+
     while (run) {
         SDL_RenderClear(renderer);
 
@@ -97,10 +107,12 @@ void checkguess() {
         SDL_SetRenderDrawColor(renderer, 197, 183, 124, SDL_ALPHA_OPAQUE);
         SDL_RenderFillRect(renderer, &border);
 
-
         // draw background
         SDL_SetRenderDrawColor(renderer, 240, 255, 255, SDL_ALPHA_OPAQUE);
-        SDL_RenderFillRect(renderer, &background); 
+        SDL_RenderFillRect(renderer, &background);
+
+        // Draw the "Who is the murderer?" text at the top
+        SDL_RenderCopy(renderer, titleTexture, NULL, &titleRect);  
        
        // draw shaun button
         SDL_SetRenderDrawColor(renderer, 178, 190, 181, SDL_ALPHA_OPAQUE); 
@@ -116,6 +128,17 @@ void checkguess() {
         SDL_SetRenderDrawColor(renderer, 178, 190, 181, SDL_ALPHA_OPAQUE); 
         SDL_RenderFillRect(renderer, &claytonButton); 
         SDL_RenderCopy(renderer, claytonTexture, NULL, &claytonText); 
+        
+         // Display attempts
+        char attemptsText[50];
+        sprintf(attemptsText, "Attempts: %d", attempts);
+
+        // Free any previously created surface/texture and create new ones
+        SDL_Surface *attemptsSurface = TTF_RenderText_Solid(font, attemptsText, textColor);
+        SDL_Texture *attemptsTexture = SDL_CreateTextureFromSurface(renderer, attemptsSurface);
+        SDL_Rect attemptsRect = {250, 100, 100, 40}; // Position above buttons
+        SDL_RenderCopy(renderer, attemptsTexture, NULL, &attemptsRect);
+
 
         // display
         SDL_RenderPresent(renderer);
@@ -137,17 +160,37 @@ void checkguess() {
                  // if the click is inside the button
                 if (x >= shaunButton.x && x <= (shaunButton.x + shaunButton.w) &&
                     y >= shaunButton.y && y <= (shaunButton.y + shaunButton.h)) {
-                    printf("Shaun\n");  
+                    printf("Shaun\n"); 
+                    attempts++; 
                 }
 
                 if (x >= glenButton.x && x <= (glenButton.x + glenButton.w) &&
                     y >= glenButton.y && y <= (glenButton.y + glenButton.h)) {
                     printf("Glen\n");  
+                    // User guessed correctly! Display a winning message
+                    SDL_Surface *winMessage = TTF_RenderText_Solid(font, "You Win! Glen is the murderer!", textColor);
+                    SDL_Texture *winTexture = SDL_CreateTextureFromSurface(renderer, winMessage);
+                    SDL_Rect winRect = {150, 200, 300, 40};
+                    SDL_RenderCopy(renderer, winTexture, NULL, &winRect);
+                    SDL_RenderPresent(renderer);
+                    SDL_Delay(2000); // Display the message for a few seconds
+                    run = false; // Exit the game loop
                 }
 
                 if (x >= claytonButton.x && x <= (claytonButton.x + claytonButton.w) &&
                     y >= claytonButton.y && y <= (claytonButton.y + claytonButton.h)) {
                     printf("Clayton\n");  
+                    attempts++;
+                }
+                // If attempts exceed 3, display the game over message
+                if (attempts >= 3) {
+                    SDL_Surface *gameOver = TTF_RenderText_Solid(font, "You've exhausted your number of tries!", textColor);
+                    SDL_Texture *gameOverTexture = SDL_CreateTextureFromSurface(renderer, gameOver);
+                    SDL_Rect gameOverRect = {150, 200, 300, 40};
+                    SDL_RenderCopy(renderer, gameOverTexture, NULL, &gameOverRect);
+                    SDL_RenderPresent(renderer);
+                    SDL_Delay(2000); // Delay to let the user see the message
+                    run = false; // Exit the game loop
                 }
             }
         } 
@@ -165,7 +208,9 @@ void checkguess() {
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     IMG_Quit();
+
 } 
+
 
 int main(int argc, char *argv[]){
     checkguess(); 
