@@ -14,7 +14,7 @@ jobs:
     - name: Build test
       run: 
         
-        make ctest
+        make test
 
 
     - name: Run tests
