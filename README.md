@@ -25,5 +25,5 @@ Before playing the game, the relevant libraries for SDL2 must be downloaded ahea
 	3. SDL2 true type font library: 
 	sudo apt install libsdl2-ttf-dev
 	
-When compiling in c, make sure to use the correct flags: 
+When compiling in C, make sure to use the correct flags: 
  -lSDL2 -lSDL2_image -lSDL2_ttf
