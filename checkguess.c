@@ -182,8 +182,8 @@ void checkguess() {
                     printf("Clayton\n");  
                     attempts++;
                 }
-                // If attempts exceed 3, display the game over message
-                if (attempts >= 3) {
+                // If attempts exceed 2, display the game over message
+                if (attempts >= 2) {
                     SDL_Surface *gameOver = TTF_RenderText_Solid(font, "You've exhausted your number of tries!", textColor);
                     SDL_Texture *gameOverTexture = SDL_CreateTextureFromSurface(renderer, gameOver);
                     SDL_Rect gameOverRect = {150, 200, 300, 40};
