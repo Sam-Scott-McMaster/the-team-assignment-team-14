@@ -13,5 +13,5 @@ map: map.c
 letter:
 	gcc -o letter letter.c -lSDL2 -lSDL2_image -lSDL2_ttf 
 
-test : 
+test: 
 	gcc -o test letter-test.c recipe-test.c map-test.c test-secrets.c -lSDL2 -lSDL2_image -lSDL2_ttf
