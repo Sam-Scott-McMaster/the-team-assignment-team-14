@@ -75,11 +75,6 @@ void openRecipe() {
 
     while (runRecipe) {
         SDL_RenderClear(renderer);
-
-        SDL_SetWindowResizable(window, SDL_FALSE);
-        SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
-        SDL_SetWindowMouseGrab(window, SDL_TRUE);
-        SDL_SetWindowGrab(window, SDL_TRUE);
         
         // draw border
         SDL_SetRenderDrawColor(renderer, 197, 183, 124, SDL_ALPHA_OPAQUE);
@@ -136,7 +131,3 @@ void openRecipe() {
     SDL_Quit();
     IMG_Quit();
 } 
-
-int main(){
-    openRecipe(); 
-}
