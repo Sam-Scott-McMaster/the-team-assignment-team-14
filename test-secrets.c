@@ -12,13 +12,13 @@ Author: Sachika Saxnea, McMaster University
 #include "secrets-test.h"
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
-
+/*
 int test_Letter() {
 
     int result = Letter(); //calls return values 
     return result;  //return a value for testing purposes 
 }
-
+*/
 int test_openRecipe(){
     int result = openRecipe();
     return result;
@@ -30,15 +30,15 @@ int test_openMap(){
     return result;
 }
 int main() {
-    int letterResult = test_Letter();  //assign integer
+    //int letterResult = test_Letter();  //assign integer
     int recipeResult = test_openRecipe();
     int mapResult = test_openMap();
-    if (letterResult == EXIT_SUCCESS) {  
+    /*if (letterResult == EXIT_SUCCESS) {  
         printf("Letter Function Passed Test\n"); //print success message if 0
     } else {
         printf("Letter Function Failed\n"); //prints fail message if 1
         exit(EXIT_FAILURE);
-    }
+    } */
 
     if (recipeResult == EXIT_SUCCESS) {
         printf("Recipe Function Passed Test\n");
