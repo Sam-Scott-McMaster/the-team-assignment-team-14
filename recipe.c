@@ -1,10 +1,8 @@
-/* Meigan Rogers, Nov 24 2024
- * 
+/* 
  * This function will "enlarge" one of the clues that the user clicks on
  * Focuses on the recipe clue
- * on mac before executing: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
+ * on mac before executing and compiling: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
- * McMaster University
  * 
  * */
 
@@ -22,8 +20,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
 #endif
-
-
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
@@ -56,17 +52,6 @@ void openRecipe() {
     // make image
     SDL_Surface * image = IMG_Load("images/recipe.png");
     SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(renderer, image);
-    // if (!image) {
-    //     fprintf(stderr, "No image loaded: %s\n", IMG_GetError());
-    //     return;
-    // }
-    
-    // if (!imageTexture) {
-    //     fprintf(stderr, "No image texture created: %s\n", SDL_GetError());
-    //     SDL_FreeSurface(image);
-    //     return;
-    // }
-
     
     // download font
     TTF_Font *font = TTF_OpenFont("Dosis/static/Dosis-ExtraBold.ttf", 24); 
@@ -152,12 +137,6 @@ void openRecipe() {
     IMG_Quit();
 } 
 
-
-void checkGuess(char *name){
-
-
-}
-
-int main(int argc, char *argv[]){
+int main(){
     openRecipe(); 
 }
