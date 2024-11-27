@@ -1,0 +1,23 @@
+name: Build Script for Secrets of Summerside 
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Build test
+      run: 
+        
+        make ctest
+
+
+    - name: Run tests
+      run: 
+        ./test
+
