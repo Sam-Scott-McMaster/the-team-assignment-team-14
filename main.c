@@ -3,14 +3,21 @@
 // Last Updated: Tuesday, November 26, 2024
 // This program uses the SDL and SDL_image libraries.
 
-#include <stdio.h>
+
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#ifdef __APPLE_CC__
+#include <SDL.h>
+#include <SDL_timer.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#else
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
-//#include <SDL_ttf.h>
+#include <SDL2/SDL_ttf.h>
+#endif
 #include "secrets.h"
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
@@ -57,6 +64,7 @@ int main(int argc, char *argv[]) {
     SDL_Rect map = {185, 614, 235, 266};
     SDL_Rect recipe = {739, 180, 273, 364};
     SDL_Rect letter = {1485, 226, 322, 218};
+    SDL_Rect guessButton = {1623, 821, 305, 80};
 
     bool run = true;
 
@@ -98,6 +106,7 @@ int main(int argc, char *argv[]) {
                     SDL_RenderDrawRect(renderer, &map);
                     SDL_RenderDrawRect(renderer, &recipe);
                     SDL_RenderDrawRect(renderer, &letter);
+                    SDL_RenderDrawRect(renderer, &guessButton);
 
                     SDL_RenderPresent(renderer);
                     
@@ -107,7 +116,7 @@ int main(int argc, char *argv[]) {
 
                             if (event.type == SDL_QUIT) {
 
-                            run = false;
+                                run = false;
                         
                             } // end of if statement
 
@@ -131,6 +140,12 @@ int main(int argc, char *argv[]) {
                                 if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
 
                                     Letter();
+
+                                } // end of if statement
+
+                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+
+                                    checkguess();
 
                                 } // end of if statement
 

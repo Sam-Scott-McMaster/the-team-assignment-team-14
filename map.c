@@ -140,8 +140,3 @@ void openMap() {
     SDL_Quit();
     IMG_Quit();
 }
-
-
-int main() {
-    openMap();
-}

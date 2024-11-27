@@ -35,7 +35,3 @@ void Letter() {
     SDL_DestroyRenderer(newRenderer);
     SDL_DestroyWindow(newWindow);
 }
-
-int main(){
-    Letter(); 
-}
