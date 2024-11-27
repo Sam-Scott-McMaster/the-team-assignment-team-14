@@ -1,4 +1,4 @@
-name: Build Script for Secrets of Summerside 
+name: Build Script for Secrets of Summerside
 
 on:
   push:
@@ -11,18 +11,17 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    name: Set up C environment
-      run: 
+    - name: Set up C environment
+      run: |
         sudo apt update
         sudo apt install -y build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
-        
+
     - name: Build test
-      run: 
-        
+      run: |
         make test
 
-
     - name: Run tests
-      run: 
+      run: |
         ./test
+
 
