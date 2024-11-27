@@ -65,6 +65,7 @@ int main(int argc, char *argv[]) {
     SDL_Rect recipe = {739, 180, 273, 364};
     SDL_Rect letter = {1485, 226, 322, 218};
     SDL_Rect guessButton = {1623, 821, 305, 80};
+    SDL_Rect helpButton = {1720, 14, 146, 33};
 
     bool run = true;
 
@@ -107,6 +108,7 @@ int main(int argc, char *argv[]) {
                     SDL_RenderDrawRect(renderer, &recipe);
                     SDL_RenderDrawRect(renderer, &letter);
                     SDL_RenderDrawRect(renderer, &guessButton);
+                    SDL_RenderDrawRect(renderer, &helpButton);
 
                     SDL_RenderPresent(renderer);
                     
@@ -148,6 +150,12 @@ int main(int argc, char *argv[]) {
                                     checkguess();
 
                                 } // end of if statement
+
+                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+
+                                    openHelp();
+
+                                }
 
                             } // end of if statement
 
