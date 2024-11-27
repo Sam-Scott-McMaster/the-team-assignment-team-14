@@ -9,10 +9,10 @@
 
 int Letter() {
     // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        printf("SDL_Init failed: %s\n", SDL_GetError());
-        return EXIT_FAILURE;  // Error occurred
-    }
+    //if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+       // printf("SDL_Init failed: %s\n", SDL_GetError());
+        //return EXIT_FAILURE;  // Error occurred
+   // }
 
     // Create window
     SDL_Window *newWindow = SDL_CreateWindow("Letter Clue", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
