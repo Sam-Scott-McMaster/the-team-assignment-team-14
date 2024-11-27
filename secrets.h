@@ -5,3 +5,4 @@ void Letter();
 void openRecipe();
 void openMap();
 void checkguess();
+void openHelp();
