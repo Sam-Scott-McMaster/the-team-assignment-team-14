@@ -33,10 +33,10 @@ This program is the same as map function however altered slighty for testing pur
 
 int openMap() {
     // Initializes the SDL
-    if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
-        fprintf(stderr, "%s\n", SDL_GetError());
-        return EXIT_FAILURE;
-    }
+    //if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
+        //fprintf(stderr, "%s\n", SDL_GetError());
+        //return EXIT_FAILURE;
+    //}
 
 
     // Creates the window and renderer

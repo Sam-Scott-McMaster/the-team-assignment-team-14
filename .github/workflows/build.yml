@@ -21,4 +21,13 @@ jobs:
         make
 
 
+    - name: Build test
+      run: |
+        make test
+
+
+    - name: Run tests
+      run: |
+        ./test
+
 

@@ -32,12 +32,12 @@ This program is the same as recipe function however altered slighty for testing 
 
 int openRecipe() {
     
-    if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
+    //if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 
-        fprintf(stderr, "%s\n", SDL_GetError());
-        return EXIT_FAILURE;
+        //fprintf(stderr, "%s\n", SDL_GetError());
+        //return EXIT_FAILURE;
 
-    }
+   // }
 
     
     SDL_Window* window = SDL_CreateWindow("Recipe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
