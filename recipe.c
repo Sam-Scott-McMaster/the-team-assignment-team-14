@@ -106,17 +106,17 @@ void openRecipe() {
             } 
 
             // handling mouse click
-            if (event.type == SDL_MOUSEBUTTONDOWN){
-                // coordinates of where the click occured
-                int x = event.button.x; 
-                int y = event.button.y; 
+            // if (event.type == SDL_MOUSEBUTTONDOWN){
+            //     // coordinates of where the click occured
+            //     int x = event.button.x; 
+            //     int y = event.button.y; 
 
-                // if the click is inside the button
-                if (x >= button.x && x <= (button.x + button.w) &&
-                    y >= button.y && y <= (button.y + button.h)) {
-                    runRecipe = false; 
-                }
-            }
+            //     // if the click is inside the button
+            //     if (x >= button.x && x <= (button.x + button.w) &&
+            //         y >= button.y && y <= (button.y + button.h)) {
+            //         runRecipe = false; 
+            //     }
+            // }
         } 
 
     } // end of while loop
