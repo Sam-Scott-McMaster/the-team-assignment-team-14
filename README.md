@@ -5,7 +5,7 @@ Using the previous detective's notes, piece together the story by investigating 
 board and clicking on the clues to view them. 
 
 There are three clues in total: a map, a picture, and a letter. When you’re ready, pick the 
-person you think committed the crime! But be careful, as you only have 3 attempts to get it right.  
+person you think committed the crime! But be careful, as you only have 2 attempts to get it right.  
 
 Starting at the introduction page, navigate through the game by clicking on the different clues. 
 To exit each clue, either close the window, or click the "Done" button. To make a guess, another 
