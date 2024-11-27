@@ -6,7 +6,7 @@
 
 void Letter() {
     // Creates a new window and renderer 
-    SDL_Init(SDL_INIT_VIDEO);
+    //SDL_Init(SDL_INIT_VIDEO);
     SDL_Window *newWindow = SDL_CreateWindow("Letter Clue", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
     SDL_Renderer *newRenderer = SDL_CreateRenderer(newWindow, -1, SDL_RENDERER_ACCELERATED);
 
