@@ -10,6 +10,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
+//#include <SDL_ttf.h>
 #include "secrets.h"
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
@@ -51,7 +52,11 @@ int main(int argc, char *argv[]) {
 
     } // end of if statement
 
-    SDL_Rect continueButton = {800, 900, 400, 100};
+    // buttons
+    SDL_Rect continueButton = {1390, 875, 345, 80};
+    SDL_Rect map = {185, 614, 235, 266};
+    SDL_Rect recipe = {739, 180, 273, 364};
+    SDL_Rect letter = {1485, 226, 322, 218};
 
     bool run = true;
 
@@ -61,14 +66,6 @@ int main(int argc, char *argv[]) {
         SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
         SDL_SetWindowMouseGrab(window, SDL_TRUE);
         SDL_SetWindowGrab(window, SDL_TRUE);
-        
-        // draw border
-        // SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
-        // SDL_RenderFillRect(renderer, &border);
-
-        // draw corkboard
-        // SDL_SetRenderDrawColor(renderer, 189, 154, 122, SDL_ALPHA_OPAQUE);
-        // SDL_RenderFillRect(renderer, &corkboard);
 
         // render picture
         SDL_RenderCopy(renderer, introductionTexture, NULL, NULL);
@@ -93,8 +90,14 @@ int main(int argc, char *argv[]) {
                 int y = event.button.y; 
 
                 if (x >= continueButton.x && x <= (continueButton.x + continueButton.w) && y >= continueButton.y && y <= (continueButton.y + continueButton.h)) {
+
+                    SDL_RenderClear(renderer);
                 
                     SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
+
+                    SDL_RenderDrawRect(renderer, &map);
+                    SDL_RenderDrawRect(renderer, &recipe);
+                    SDL_RenderDrawRect(renderer, &letter);
 
                     SDL_RenderPresent(renderer);
                     
@@ -106,6 +109,31 @@ int main(int argc, char *argv[]) {
 
                             run = false;
                         
+                            } // end of if statement
+
+                            if (event.type == SDL_MOUSEBUTTONDOWN) {
+
+                                int x = event.button.x; 
+                                int y = event.button.y; 
+
+                                if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
+
+                                    openMap();
+
+                                } // end of if statement
+
+                                if (x >= recipe.x && x <= (recipe.x + recipe.w) && y >= recipe.y && y <= (recipe.y + recipe.h)) {
+
+                                    openRecipe();
+
+                                } // end of if statement
+
+                                if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
+
+                                    Letter();
+
+                                } // end of if statement
+
                             } // end of if statement
 
                         } // end of while loop
