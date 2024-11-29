@@ -1,7 +1,7 @@
 /* Meigan Rogers, Dec 2024
  * McMaster University
  * The recipe clue: 
- * This function will "enlarge" the recipe clue that the user can click on in the main corkboard.
+ * This function will "enlarge" the recipe clue that the user can click on from the main corkboard.
  * It will open a new window, and display the recipe image.
  * The user can exit the clue by clicking the "Done" button.
  * 
