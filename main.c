@@ -67,7 +67,7 @@ int main(int argc, char *argv[]) {
 
     } // end of if statement
 
-    buttons
+    //buttons
     SDL_Rect continueButton = {1390, 875, 345, 80};
     SDL_Rect map = {185, 614, 235, 266};
     SDL_Rect recipe = {739, 180, 273, 364};
