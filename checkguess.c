@@ -24,13 +24,6 @@
 
 void checkguess() {
 
-    if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
-
-        fprintf(stderr, "%s\n", SDL_GetError());
-        exit(EXIT_FAILURE);
-
-    }
-
     // create window and renderer
     SDL_Window* window = SDL_CreateWindow("Guess", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_RESIZABLE);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
@@ -42,10 +35,6 @@ void checkguess() {
 
     } // end of if statement
     
-    if (TTF_Init() == -1) {
-        fprintf(stderr, "TTF_Init Error: %s\n", TTF_GetError());
-        exit(EXIT_FAILURE);
-    }
     // download font
     TTF_Font *font = TTF_OpenFont("Dosis/static/Dosis-ExtraBold.ttf", 24); 
     if (!font){
@@ -98,13 +87,11 @@ void checkguess() {
     while (run) {
         SDL_RenderClear(renderer);
 
-        SDL_SetWindowResizable(window, SDL_FALSE);
-        SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
         SDL_SetWindowMouseGrab(window, SDL_FALSE);
         SDL_SetWindowGrab(window, SDL_FALSE);
         
         // draw border
-        SDL_SetRenderDrawColor(renderer, 197, 183, 124, SDL_ALPHA_OPAQUE);
+        SDL_SetRenderDrawColor(renderer, 100, 149, 237, SDL_ALPHA_OPAQUE);
         SDL_RenderFillRect(renderer, &border);
 
         // draw background
@@ -189,7 +176,7 @@ void checkguess() {
                     SDL_Rect gameOverRect = {150, 200, 300, 40};
                     SDL_RenderCopy(renderer, gameOverTexture, NULL, &gameOverRect);
                     SDL_RenderPresent(renderer);
-                    SDL_Delay(2000); // Delay to let the user see the message
+                    SDL_Delay(5000); // Delay to let the user see the message
                     run = false; // Exit the game loop
                 }
             }
@@ -200,14 +187,15 @@ void checkguess() {
     SDL_DestroyTexture(shaunTexture); 
     SDL_DestroyTexture(glenTexture);
     SDL_DestroyTexture(claytonTexture);
-    SDL_FreeSurface(shaun);
-    SDL_FreeSurface(glen);
-    SDL_FreeSurface(clayton); 
+    // SDL_FreeSurface(shaun);
+    // SDL_FreeSurface(glen);
+    // SDL_FreeSurface(clayton); 
     TTF_CloseFont(font); 
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
-    SDL_Quit();
-    IMG_Quit();
+    renderer = NULL; 
+    // SDL_Quit();
+    // IMG_Quit();
 
 } 
 
