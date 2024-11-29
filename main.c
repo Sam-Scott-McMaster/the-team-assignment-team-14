@@ -22,6 +22,7 @@
 #define EXIT_SUCCESS 0
 #define EXIT_FAILURE 1
 
+
 int main(int argc, char *argv[]) {
 
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
@@ -36,10 +37,14 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "%s\n", SDL_GetError());
         exit(EXIT_FAILURE);
 
-    } // end of if statement
+    } // end of if 
 
+    if (TTF_Init() == -1) {
+        fprintf(stderr, "TTF_Init Error: %s\n", TTF_GetError());
+        exit(EXIT_FAILURE);
+    }
+    
     SDL_Window* window = SDL_CreateWindow("SECRETS OF SUMMERSIDE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 2000, 1000, SDL_WINDOW_RESIZABLE);
-
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     SDL_Event event;
@@ -67,30 +72,28 @@ int main(int argc, char *argv[]) {
     SDL_Rect guessButton = {1623, 821, 305, 80};
     SDL_Rect helpButton = {1720, 14, 146, 33};
 
-    bool run = true;
+    bool runIntro = true;
+    bool run = true; 
 
-    while (run) {
+    while (runIntro) {
 
-        SDL_SetWindowResizable(window, SDL_FALSE);
-        SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
-        SDL_SetWindowMouseGrab(window, SDL_TRUE);
-        SDL_SetWindowGrab(window, SDL_TRUE);
+        //SDL_SetWindowResizable(window, SDL_FALSE);
+        // SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
+        // SDL_SetWindowMouseGrab(window, SDL_TRUE);
+        // SDL_SetWindowGrab(window, SDL_TRUE);
 
         // render picture
         SDL_RenderCopy(renderer, introductionTexture, NULL, NULL);
-
         SDL_RenderDrawRect(renderer, &continueButton);
 
         // display
         SDL_RenderPresent(renderer);
-        SDL_Delay(5000);
+        SDL_Delay(100);
 
         while (SDL_PollEvent(&event)) {
 
             if (event.type == SDL_QUIT) {
-
-                run = false;
-
+                runIntro = false;
             } // end of if statement
 
             if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -100,69 +103,95 @@ int main(int argc, char *argv[]) {
 
                 if (x >= continueButton.x && x <= (continueButton.x + continueButton.w) && y >= continueButton.y && y <= (continueButton.y + continueButton.h)) {
 
-                    SDL_RenderClear(renderer);
+                    // SDL_RenderClear(renderer);
                 
-                    SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
+                    // SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
 
-                    SDL_RenderDrawRect(renderer, &map);
-                    SDL_RenderDrawRect(renderer, &recipe);
-                    SDL_RenderDrawRect(renderer, &letter);
-                    SDL_RenderDrawRect(renderer, &guessButton);
-                    SDL_RenderDrawRect(renderer, &helpButton);
+                    // SDL_RenderDrawRect(renderer, &map);
+                    // SDL_RenderDrawRect(renderer, &recipe);
+                    // SDL_RenderDrawRect(renderer, &letter);
+                    // SDL_RenderDrawRect(renderer, &guessButton);
+                    // SDL_RenderDrawRect(renderer, &helpButton);
 
-                    SDL_RenderPresent(renderer);
-                    
-                    while (run) {
+                    // SDL_RenderPresent(renderer);
+                    runIntro = false; 
 
-                        while (SDL_PollEvent(&event)) {
+                    run = true; 
+                
+                } // end of if statement
 
-                            if (event.type == SDL_QUIT) {
+            } // end of if statement
 
-                                run = false;
+        } // end of while loop
+
+    } // end of while loop
+
+
+    while (run) {
+        SDL_RenderClear(renderer);
+        SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
+        SDL_RenderDrawRect(renderer, &map);
+        SDL_RenderDrawRect(renderer, &recipe);
+        SDL_RenderDrawRect(renderer, &letter);
+        SDL_RenderDrawRect(renderer, &guessButton);
+        SDL_RenderDrawRect(renderer, &helpButton);
+
+        SDL_RenderPresent(renderer);
+
+        while (SDL_PollEvent(&event)) {
+
+            if (event.type == SDL_QUIT) {
+
+                run = false;
                         
-                            } // end of if statement
+            } // end of if statement
 
-                            if (event.type == SDL_MOUSEBUTTONDOWN) {
+            if (event.type == SDL_MOUSEBUTTONDOWN) {
 
-                                int x = event.button.x; 
-                                int y = event.button.y; 
+                int x = event.button.x; 
+                int y = event.button.y; 
 
-                                if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
+                if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
+                    SDL_Window* mapWindow = SDL_CreateWindow("Map View", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
+                    SDL_Delay(100); 
+                    openMap(mapWindow);
+                    SDL_Delay(100); 
+                    SDL_DestroyWindow(mapWindow); 
+                    mapWindow = NULL; 
+                    SDL_PumpEvents();
+                    SDL_Delay(2000);
+                    break; 
+                } // end of if statement
 
-                                    openMap();
+                if (x >= recipe.x && x <= (recipe.x + recipe.w) && y >= recipe.y && y <= (recipe.y + recipe.h)) {
+                    //puts("new window created"); 
+                    SDL_Window *recipeWindow = SDL_CreateWindow("Recipe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
+                    //puts("call function"); 
+                    SDL_Delay(100); 
+                    openRecipe(recipeWindow);
+                    SDL_Delay(100); 
+                    //puts("out of function, destroying window");  
+                    SDL_DestroyWindow(recipeWindow); 
+                    //puts("Free recipe pointer"); 
+                    recipeWindow = NULL; 
+                    //puts("Window destroyed\n"); 
+                    SDL_PumpEvents(); 
+                    //SDL_RenderClear(renderer);
+                    SDL_Delay(2000);
+                    break; 
+                } // end of if statement
 
-                                } // end of if statement
+                if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
+                        Letter();
+                } // end of if statement
 
-                                if (x >= recipe.x && x <= (recipe.x + recipe.w) && y >= recipe.y && y <= (recipe.y + recipe.h)) {
+                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+                    checkguess();
 
-                                    openRecipe();
+                } // end of if statement
 
-                                } // end of if statement
-
-                                if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
-
-                                    Letter();
-
-                                } // end of if statement
-
-                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
-
-                                    checkguess();
-
-                                } // end of if statement
-
-                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
-
-                                    openHelp();
-
-                                } // end of if statement
-
-                            } // end of if statement
-
-                        } // end of while loop
-
-                     } // end of while loop
-                
+                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+                    openHelp();
                 } // end of if statement
 
             } // end of if statement
@@ -175,6 +204,7 @@ int main(int argc, char *argv[]) {
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
     IMG_Quit();
+    TTF_Quit(); 
     exit(EXIT_SUCCESS);
 
 } // end of main function
