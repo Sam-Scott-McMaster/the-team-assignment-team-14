@@ -1,6 +1,10 @@
-/* Meigan Rogers
- * This function will "enlarge" one of the clues that the user clicks on
- * Focuses on the recipe clue
+/* Meigan Rogers, Dec 2024
+ * McMaster University
+ * The recipe clue: 
+ * This function will "enlarge" the recipe clue that the user can click on in the main corkboard.
+ * It will open a new window, and display the recipe image.
+ * The user can exit the clue by clicking the "Done" button.
+ * 
  * on mac before executing and compiling: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
  * 
@@ -34,8 +38,7 @@ void openRecipe(SDL_Window* recipeWindow) {
     // make image
     SDL_Surface * image = IMG_Load("images/recipe.png"); 
     SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(renderer, image);
-    //puts("Freeing image surface"); 
-    //SDL_FreeSurface(image); 
+    // free image pointer
     image = NULL; 
     SDL_Delay(100); 
 
@@ -47,8 +50,7 @@ void openRecipe(SDL_Window* recipeWindow) {
     SDL_Color textColor = {0, 0, 0}; 
     SDL_Surface *text = TTF_RenderText_Solid(font, "Done", textColor); 
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, text); 
-    //puts("Freeing surface"); 
-    //SDL_FreeSurface(text); 
+    // free text pointer
     text = NULL; 
     SDL_Delay(100); 
 
@@ -61,7 +63,7 @@ void openRecipe(SDL_Window* recipeWindow) {
     bool runRecipe = true;
     SDL_Delay(100); 
 
-    while (runRecipe) {
+    while (runRecipe) { 
 
         SDL_SetWindowMouseGrab(recipeWindow, SDL_TRUE);
         SDL_SetWindowGrab(recipeWindow, SDL_TRUE);
@@ -112,6 +114,7 @@ void openRecipe(SDL_Window* recipeWindow) {
 
     }
 
+    // destroy renderer and close the font 
     SDL_Delay(100); 
     SDL_DestroyRenderer(renderer);
     renderer = NULL; 

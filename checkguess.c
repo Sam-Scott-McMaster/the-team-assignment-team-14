@@ -1,8 +1,11 @@
-/* 
- * 
- * This function will check the user's guess (if it's correct or not)
- * 
+/* Midhousha Anura and Meigan Rogers, Dec 2024
  * McMaster University
+ * This function will check the user's guess (if it's correct or not)
+ * Once the user clicks on the guess button from the main corkboard, a window will open up
+ * displaying the suspects and the number of attemps
+ * The user has only two tries to guess the correct answer
+ * 
+ * The game will exit once the user guessed correctly or incorrectly after 2 tries
  * 
  * */
 
@@ -59,13 +62,11 @@ void checkguess() {
     // text 3: Clayton
     SDL_Surface *clayton = TTF_RenderText_Solid(font, "Clayton", textColor); 
     SDL_Texture *claytonTexture = SDL_CreateTextureFromSurface(renderer, clayton); 
-
     
     // draw rectangles
     SDL_Rect border = {0,0,600, 400}; 
     SDL_Rect background = {10, 10, 580, 380}; 
     SDL_Rect titleRect = {150, 20, 300, 40};
-
 
     // draw buttons for each person
     SDL_Rect shaunButton = {450, 150, 100, 40};
