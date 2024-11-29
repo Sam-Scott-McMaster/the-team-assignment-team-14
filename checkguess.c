@@ -1,7 +1,6 @@
 /* 
  * 
  * This function will check the user's guess (if it's correct or not)
- * on mac before executing: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
  * McMaster University
  * 
@@ -187,15 +186,9 @@ void checkguess() {
     SDL_DestroyTexture(shaunTexture); 
     SDL_DestroyTexture(glenTexture);
     SDL_DestroyTexture(claytonTexture);
-    // SDL_FreeSurface(shaun);
-    // SDL_FreeSurface(glen);
-    // SDL_FreeSurface(clayton); 
     TTF_CloseFont(font); 
     SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     renderer = NULL; 
-    // SDL_Quit();
-    // IMG_Quit();
-
 } 
 

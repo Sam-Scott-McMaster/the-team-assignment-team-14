@@ -29,7 +29,7 @@ void openHelp(SDL_Window *newWindow) {
     TTF_Font *font = TTF_OpenFont("Dosis/static/Dosis-ExtraBold.ttf", 24); 
     SDL_Delay(100); 
 
-     // make textbox
+    // make textbox
     SDL_Color textColor = {0, 0, 0}; 
     SDL_Surface *text = TTF_RenderText_Solid(font, "Done", textColor); 
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(newRenderer, text); 
@@ -67,10 +67,10 @@ void openHelp(SDL_Window *newWindow) {
 
         SDL_RenderClear(newRenderer);
         SDL_RenderCopy(newRenderer, texture, NULL, NULL);
-         // draw button
+        // draw button
         SDL_SetRenderDrawColor(newRenderer, 178, 190, 181, SDL_ALPHA_OPAQUE); 
         SDL_RenderFillRect(newRenderer, &button); 
-         // render button and add the text on top
+        // render button and add the text on top
         SDL_RenderCopy(newRenderer, textTexture, NULL, &textBox); 
         SDL_RenderPresent(newRenderer);
     }

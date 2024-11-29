@@ -73,7 +73,6 @@ void openMap(SDL_Window *mapWindow) {
         SDL_SetWindowMouseGrab(mapWindow, SDL_TRUE);
         SDL_SetWindowGrab(mapWindow, SDL_TRUE);
 
-
         // Draws border
         SDL_SetRenderDrawColor(renderer, 197, 183, 124, SDL_ALPHA_OPAQUE);
         SDL_RenderFillRect(renderer, &border);

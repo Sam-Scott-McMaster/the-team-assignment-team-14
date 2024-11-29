@@ -118,6 +118,10 @@ int main(int argc, char *argv[]) {
 
 
     while (run) {
+
+        SDL_SetWindowMouseGrab(window, SDL_FALSE);
+        SDL_SetWindowGrab(window, SDL_FALSE);
+
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
         SDL_RenderDrawRect(renderer, &map);
