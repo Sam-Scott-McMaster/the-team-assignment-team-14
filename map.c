@@ -70,6 +70,8 @@ void openMap(SDL_Window *mapWindow) {
 
     while (runMap) {
         SDL_RenderClear(renderer);
+        SDL_SetWindowMouseGrab(mapWindow, SDL_TRUE);
+        SDL_SetWindowGrab(mapWindow, SDL_TRUE);
 
 
         // Draws border
@@ -127,11 +129,7 @@ void openMap(SDL_Window *mapWindow) {
     SDL_DestroyTexture(textTexture);
     textTexture = NULL; 
     imageTexture = NULL; 
-
-    // SDL_FreeSurface(text);
-    // SDL_FreeSurface(image);
     TTF_CloseFont(font);
-    // SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     renderer = NULL; 
 }
