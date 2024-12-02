@@ -10,7 +10,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-  
+
+    - name: Build game
+      run: 
+        make secrets 
+        
     - name: Build test
       run: 
         make test
