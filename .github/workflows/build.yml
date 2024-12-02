@@ -11,21 +11,18 @@ jobs:
     steps:
     - uses: actions/checkout@v4
   
-    - name: Build game
-      run: 
-        make
-
-
     - name: Build test
       run: 
         make test
         chmod +x ./test_script.sh
 
-
-
-
     - name: Run test
       run: 
-        ./test_script
+        ./test_script.sh
+
+    - name : Generate gcov report
+      run:
+        make testcoverage 
+        gcov checkguess-test.c
 
 

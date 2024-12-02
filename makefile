@@ -15,6 +15,9 @@ letter:
 
 test: 
 	gcc -o test checkguess-test.c
+testcoverage:
+	gcc -o checkguess --coverage checkguess-test.c
+
 
 
 all: main.c secrets.h recipe.c map.c checkguess.c help.c letter.c
