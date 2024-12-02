@@ -1,7 +1,7 @@
 // Purpose: Secrets of Summerside.
 // Author: Tharny Elilvannan, McMaster University
-// Last Updated: Tuesday, November 26, 2024
-// This program uses the SDL and SDL_image libraries.
+// Last Updated: Wednesday, November 27, 2024
+// This program uses the SDL, SDL_ttf, and SDL_image libraries.
 
 
 #include <stdlib.h>
@@ -83,14 +83,16 @@ int main(int argc, char *argv[]) {
 
         // display
         SDL_RenderPresent(renderer);
-        SDL_Delay(5000);
 
         while (SDL_PollEvent(&event)) {
 
-            if (event.type == SDL_QUIT) {
+            printf("%s", "hello");
 
-                run = false;
-
+            if (event.type == SDL_WINDOWEVENT_CLOSE) {
+                                
+                    SDL_DestroyWindow(window);
+                    break;
+                        
             } // end of if statement
 
             if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -101,6 +103,13 @@ int main(int argc, char *argv[]) {
                 if (x >= continueButton.x && x <= (continueButton.x + continueButton.w) && y >= continueButton.y && y <= (continueButton.y + continueButton.h)) {
 
                     SDL_RenderClear(renderer);
+
+                    SDL_SetWindowResizable(window, SDL_FALSE);
+                    SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
+                    SDL_SetWindowMouseGrab(window, SDL_TRUE);
+                    SDL_SetWindowGrab(window, SDL_TRUE); 
+
+                    SDL_Event event2;
                 
                     SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
 
@@ -114,18 +123,19 @@ int main(int argc, char *argv[]) {
                     
                     while (run) {
 
-                        while (SDL_PollEvent(&event)) {
+                        while (SDL_PollEvent(&event2)) {
 
-                            if (event.type == SDL_QUIT) {
-
-                                run = false;
+                            if (event2.type == SDL_WINDOWEVENT_CLOSE) {
+                                
+                                SDL_Quit();
+                                break;
                         
                             } // end of if statement
 
-                            if (event.type == SDL_MOUSEBUTTONDOWN) {
+                            if (event2.type == SDL_MOUSEBUTTONDOWN) {
 
-                                int x = event.button.x; 
-                                int y = event.button.y; 
+                                int x = event2.button.x; 
+                                int y = event2.button.y; 
 
                                 if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
 
@@ -151,7 +161,7 @@ int main(int argc, char *argv[]) {
 
                                 } // end of if statement
 
-                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+                                if (x >= helpButton.x && x <= (helpButton.x + helpButton.w) && y >= helpButton.y && y <= (helpButton.y + helpButton.h)) {
 
                                     openHelp();
 

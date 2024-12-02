@@ -99,6 +99,8 @@ void openRecipe() {
         SDL_Delay(100); 
 
         // handles events
+
+        while (runRecipe) {
         while (SDL_PollEvent(&event)) {
 
             if (event.type == SDL_QUIT) {
@@ -118,6 +120,7 @@ void openRecipe() {
             //     }
             // }
         } 
+        }
 
     } // end of while loop
 
