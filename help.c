@@ -81,3 +81,17 @@ void openHelp(SDL_Window *newWindow) {
     TTF_CloseFont(font); 
     
 }
+
+void help_commandline(){
+	printf("App name : Secrets of Summerside\n");
+	printf("Version number - 1.1.0\n");
+	printf("Usage: TO START GAME.\n");
+    printf("TYPE - make secrets \n");
+    printf("NEXT TYPE -  ./secrets\n");
+	printf("PRESS CONTINUE to reveal corkboard\n");
+	printf("Click on each window to reveal clues, PRESS DONE to exit window\n");
+	printf("Choose your suspect and CLICK GUESS to check your answer\n");
+	printf("These instructions are also availble in the game. PRESS help button to view\n");
+    printf("Read README.md file for more\n");
+
+} 
