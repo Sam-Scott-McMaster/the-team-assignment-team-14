@@ -18,3 +18,4 @@ void openRecipe(SDL_Window *);
 void openMap(SDL_Window *);
 void checkguess();
 void openHelp(SDL_Window *);
+void help_commandline();
