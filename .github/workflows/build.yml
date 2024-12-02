@@ -24,7 +24,7 @@ jobs:
         ./test_script.sh
 
     - name : Generate gcov report
-      run:
+      run: |
         make testcoverage 
         gcov checkguess-test.c
 
