@@ -40,13 +40,13 @@ test() {
 ##########################################
 
 # Test 1
-test "./checkguess Glen" "You Win! Glen is the murderer!"
+test "./test Glen" "You Win! Glen is the murderer!"
 
 # Test 2
-test "./checkguess Shaun Glen" "Incorrect guess You Win! Glen is the murderer!"
+test "./test Shaun Glen" "Incorrect guess You Win! Glen is the murderer!"
 
 # Test 3
-test "./checkguess Shaun Clayton" "Incorrect guess Game Over! You've exhausted your number of tries."
+test "./test Shaun Clayton" "Incorrect guess Game Over! You've exhausted your number of tries."
 
 
 ##########################################

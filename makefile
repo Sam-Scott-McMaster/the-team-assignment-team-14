@@ -14,7 +14,7 @@ letter:
 	gcc -o letter letter.c -lSDL2 -lSDL2_image -lSDL2_ttf 
 
 test: 
-	gcc -o test letter-test.c recipe-test.c map-test.c test-secrets.c -lSDL2 -lSDL2_image -lSDL2_ttf
+	gcc -o test checkguess-test.c
 
 
 all: main.c secrets.h recipe.c map.c checkguess.c help.c letter.c

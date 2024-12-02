@@ -10,12 +10,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Set up C environment
-      run: |
-        sudo apt update
-        sudo apt install -y build-essential libsdl2-dev libsdl2-image-dev libsdl2-ttf-dev
-        export DISPLAY=:0
   
     - name: Build game
       run: 
@@ -23,12 +17,15 @@ jobs:
 
 
     - name: Build test
-      run: |
+      run: 
         make test
+        chmod +x ./test_script.sh
 
 
-    - name: Run tests
-      run: |
-        ./test
+
+
+    - name: Run test
+      run: 
+        ./test_script
 
 
