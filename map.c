@@ -20,17 +20,11 @@
 #define EXIT_FAILURE 1
 
 
-void openMap() {
-    // Initializes the SDL
-    if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
-        fprintf(stderr, "%s\n", SDL_GetError());
-        exit(EXIT_FAILURE);
-    }
-
+void openMap(SDL_Window *mapWindow) {
 
     // Creates the window and renderer
-    SDL_Window* window = SDL_CreateWindow("Map View", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    //SDL_Window* window = SDL_CreateWindow("Map View", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
+    SDL_Renderer* renderer = SDL_CreateRenderer(mapWindow, -1, SDL_RENDERER_ACCELERATED);
     SDL_Event event;
 
 
@@ -39,17 +33,14 @@ void openMap() {
         exit(EXIT_FAILURE);
     }
    
-    // Initializes the TTF (for text rendering)
-    if (TTF_Init() == -1) {
-        fprintf(stderr, "TTF_Init Error: %s\n", TTF_GetError());
-        exit(EXIT_FAILURE);
-    }
-
 
     // Loads the map image
     SDL_Surface *image = IMG_Load("images/map.png");
     SDL_Texture *imageTexture = SDL_CreateTextureFromSurface(renderer, image);
    
+    //SDL_FreeSurface(image); 
+    image = NULL; 
+
     // Loads the font for the text
     TTF_Font *font = TTF_OpenFont("Dosis/static/Dosis-ExtraBold.ttf", 24);
     if (!font) {
@@ -62,6 +53,9 @@ void openMap() {
     SDL_Color textColor = {0, 0, 0};
     SDL_Surface *text = TTF_RenderText_Solid(font, "Done", textColor);
     SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, text);
+
+    //SDL_FreeSurface(text); 
+    text = NULL; 
 
 
     // Define rectangles for drawing
@@ -76,7 +70,8 @@ void openMap() {
 
     while (runMap) {
         SDL_RenderClear(renderer);
-
+        SDL_SetWindowMouseGrab(mapWindow, SDL_TRUE);
+        SDL_SetWindowGrab(mapWindow, SDL_TRUE);
 
         // Draws border
         SDL_SetRenderDrawColor(renderer, 197, 183, 124, SDL_ALPHA_OPAQUE);
@@ -106,11 +101,9 @@ void openMap() {
 
         // Handles events
         while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                runMap = false;
-            }
-
-
+            // if (event.type == SDL_QUIT) {
+            //     runMap = false;
+            // }
             // Handles mouse click
             if (event.type == SDL_MOUSEBUTTONDOWN) {
                 int x = event.button.x;
@@ -120,23 +113,28 @@ void openMap() {
                 // If the click is inside the button, close the window
                 if (x >= button.x && x <= (button.x + button.w) &&
                     y >= button.y && y <= (button.y + button.h)) {
-                    runMap = false; // Exit the loop and close the window
+                    runMap = false; // Exit the loop and close the window 
                 }
             }
+            SDL_Delay(100); 
         }
 
 
     } // End of while loop
 
-
+    SDL_Delay(100);
     // Cleanups and free resources
     SDL_DestroyTexture(imageTexture);
     SDL_DestroyTexture(textTexture);
-    SDL_FreeSurface(text);
-    SDL_FreeSurface(image);
+    textTexture = NULL; 
+    imageTexture = NULL; 
     TTF_CloseFont(font);
-    SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
+<<<<<<< HEAD
     SDL_Quit();
     IMG_Quit();
 }
+=======
+    renderer = NULL; 
+}
+>>>>>>> refs/remotes/origin/main
