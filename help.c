@@ -16,13 +16,8 @@
 
 void openHelp(SDL_Window *newWindow) {
     // Creates a new window and renderer 
-<<<<<<< HEAD
-    SDL_Init(IMG_INIT_PNG);
-    SDL_Window *newWindow = SDL_CreateWindow("--help", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
-=======
     //SDL_Init(SDL_INIT_VIDEO);
     //SDL_Window *newWindow = SDL_CreateWindow("--help", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_SHOWN);
->>>>>>> refs/remotes/origin/main
     SDL_Renderer *newRenderer = SDL_CreateRenderer(newWindow, -1, SDL_RENDERER_ACCELERATED);
 
     //displays image 
@@ -53,11 +48,6 @@ void openHelp(SDL_Window *newWindow) {
         SDL_SetWindowGrab(newWindow, SDL_TRUE);
 
         while (SDL_PollEvent(&event)) {
-<<<<<<< HEAD
-            if (event.type == SDL_QUIT) {
-                //letterOpen = 0;
-                break;
-=======
             // if the click is inside the button
             if (event.type == SDL_MOUSEBUTTONDOWN){
                 int x = event.button.x; 
@@ -72,7 +62,6 @@ void openHelp(SDL_Window *newWindow) {
                     texture = NULL; 
                 }
 
->>>>>>> refs/remotes/origin/main
             }
         }
 

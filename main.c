@@ -1,13 +1,10 @@
 // Purpose: Secrets of Summerside.
 // Author: Tharny Elilvannan, McMaster University
-<<<<<<< HEAD
-// Last Updated: Wednesday, November 27, 2024
+// Last Updated: December 02, 2024
 // This program uses the SDL, SDL_ttf, and SDL_image libraries.
-=======
-// Last Updated: Friday, November 29, 2024
+
 // Changes by: Meigan Rogers
 // This program uses the SDL and SDL_image libraries.
->>>>>>> refs/remotes/origin/main
 
 
 #include <stdlib.h>
@@ -98,25 +95,12 @@ int main(int argc, char *argv[]) {
 
         // display
         SDL_RenderPresent(renderer);
-<<<<<<< HEAD
-
-        while (SDL_PollEvent(&event)) {
-
-            printf("%s", "hello");
-
-            if (event.type == SDL_WINDOWEVENT_CLOSE) {
-                                
-                    SDL_DestroyWindow(window);
-                    break;
-                        
-=======
         SDL_Delay(100);
 
         while (SDL_PollEvent(&event)) {
 
             if (event.type == SDL_QUIT) {
                 runIntro = false;
->>>>>>> refs/remotes/origin/main
             } // end of if statement
 
             if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -125,20 +109,8 @@ int main(int argc, char *argv[]) {
                 int y = event.button.y; 
 
                 if (x >= continueButton.x && x <= (continueButton.x + continueButton.w) && y >= continueButton.y && y <= (continueButton.y + continueButton.h)) {
-<<<<<<< HEAD
-
-                    SDL_RenderClear(renderer);
-
-                    SDL_SetWindowResizable(window, SDL_FALSE);
-                    SDL_SetWindowKeyboardGrab(window, SDL_TRUE);
-                    SDL_SetWindowMouseGrab(window, SDL_TRUE);
-                    SDL_SetWindowGrab(window, SDL_TRUE); 
-
-                    SDL_Event event2;
-=======
                     runIntro = false; 
                     run = true; 
->>>>>>> refs/remotes/origin/main
                 
                 } // end of if statement
 
@@ -146,14 +118,6 @@ int main(int argc, char *argv[]) {
 
         } // end of while loop
 
-<<<<<<< HEAD
-                        while (SDL_PollEvent(&event2)) {
-
-                            if (event2.type == SDL_WINDOWEVENT_CLOSE) {
-                                
-                                SDL_Quit();
-                                break;
-=======
     } // end of while loop
 
     // draws main corkboard
@@ -178,57 +142,13 @@ int main(int argc, char *argv[]) {
             if (event.type == SDL_QUIT) {
 
                 run = false;
->>>>>>> refs/remotes/origin/main
                         
             } // end of if statement
 
-<<<<<<< HEAD
-                            if (event2.type == SDL_MOUSEBUTTONDOWN) {
-
-                                int x = event2.button.x; 
-                                int y = event2.button.y; 
-
-                                if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
-
-                                    openMap();
-
-                                } // end of if statement
-
-                                if (x >= recipe.x && x <= (recipe.x + recipe.w) && y >= recipe.y && y <= (recipe.y + recipe.h)) {
-
-                                    openRecipe();
-
-                                } // end of if statement
-
-                                if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
-
-                                    Letter();
-
-                                } // end of if statement
-
-                                if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
-
-                                    checkguess();
-
-                                } // end of if statement
-
-                                if (x >= helpButton.x && x <= (helpButton.x + helpButton.w) && y >= helpButton.y && y <= (helpButton.y + helpButton.h)) {
-
-                                    openHelp();
-
-                                } // end of if statement
-
-                            } // end of if statement
-
-                        } // end of while loop
-
-                     } // end of while loop
-=======
             if (event.type == SDL_MOUSEBUTTONDOWN) {
                 // coordinates of the mouse click
                 int x = event.button.x; 
                 int y = event.button.y; 
->>>>>>> refs/remotes/origin/main
                 
                 // if the map was clicked
                 if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {

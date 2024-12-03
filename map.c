@@ -130,11 +130,5 @@ void openMap(SDL_Window *mapWindow) {
     imageTexture = NULL; 
     TTF_CloseFont(font);
     SDL_DestroyRenderer(renderer);
-<<<<<<< HEAD
-    SDL_Quit();
-    IMG_Quit();
-}
-=======
     renderer = NULL; 
 }
->>>>>>> refs/remotes/origin/main
