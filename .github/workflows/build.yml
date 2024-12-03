@@ -13,7 +13,7 @@ jobs:
 
     - name: Build game
       run: 
-        make secrets 
+        make 
         
     - name: Build test
       run: 
