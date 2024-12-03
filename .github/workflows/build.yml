@@ -27,9 +27,14 @@ jobs:
       run: 
         ./test_script.sh
 
-    - name : Generate gcov report
+    - name : Generate and upload gcov report
       run: |
-        make testcoverage 
-        gcov checkguess-test.c
+        gcov test-checkguess-test.c
+    
+    - name: Upload gcov report
+      uses: actions/upload-artifact@v3
+      with:
+        name: gcov-report
+        path: test-checkguess-test.c.gcov
 
 
