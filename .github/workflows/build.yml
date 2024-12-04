@@ -30,7 +30,7 @@ jobs:
 
     - name: Run test
       run: 
-        ./test_script.sh
+        ./test_script.sh > test_results.txt 
 
     - name : Generate and upload gcov report
       run: |
@@ -47,5 +47,11 @@ jobs:
       with:
         name: Secrets of Summerside
         path: secrets
+
+    - name: upload test results
+      uses: actions/upload-artifact@v4	
+      with:
+        name: Test Results			
+        path: test_results.txt
 
 
