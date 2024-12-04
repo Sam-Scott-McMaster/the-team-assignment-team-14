@@ -28,10 +28,14 @@
 
 int main(int argc, char *argv[]) {
 
-     if (strcmp(argv[1], "--help") == 0) {
+    if (argc != 1) {
 
-            help_commandline();
-            exit(EXIT_SUCCESS);
+        if (strcmp(argv[1], "--help") == 0) {
+
+                help_commandline();
+                exit(EXIT_SUCCESS);
+
+        } // end of if statement
 
     } // end of if statement
 
