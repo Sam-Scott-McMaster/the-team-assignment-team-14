@@ -1,5 +1,12 @@
 #!/bin/bash
+##########################
+# Sachika Saxena Dec 2024
+# McMaster University
+# Unit testing for function checkguess.c
+#This is a test script which checks the logic of the check-guess functions
+#SDL Libraries and Commands are not implemented here, just the logic
 
+###########################
 # Global variables for test tracking. tc = test case number, fails = number of fails 
 declare -i tc=0
 declare -i fails=0
