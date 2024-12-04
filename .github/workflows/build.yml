@@ -34,7 +34,7 @@ jobs:
 
     - name : Generate and upload gcov report
       run: |
-        gcov test-checkguess-test.c
+        gcov test-checkguess-test.c > percent_report.txt
     
     - name: Upload gcov report
       uses: actions/upload-artifact@v3
@@ -54,4 +54,8 @@ jobs:
         name: Test Results			
         path: test_results.txt
 
-
+    - name: upload percent report for gcov
+      uses: actions/upload-artifact@v4	
+      with:
+        name: percent report for gcov			
+        path: percent_report.txt
