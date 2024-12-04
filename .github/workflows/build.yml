@@ -42,4 +42,10 @@ jobs:
         name: gcov-report
         path: checkguess-test.c.gcov
 
+    - name: Upload game
+      uses: actions/upload-artifact@v4
+      with:
+        name: Secrets of Summerside
+        path: secrets
+
 
