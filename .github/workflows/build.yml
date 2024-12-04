@@ -34,12 +34,12 @@ jobs:
 
     - name : Generate and upload gcov report
       run: |
-        gcov test-checkguess-test.c
+        gcov checkguess-test.c.gcov
     
     - name: Upload gcov report
       uses: actions/upload-artifact@v3
       with:
         name: gcov-report
-        path: test-checkguess-test.c.gcov
+        path: checkguess-test.c.gcov
 
 
