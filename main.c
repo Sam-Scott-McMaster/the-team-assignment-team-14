@@ -1,6 +1,6 @@
 // Purpose: Secrets of Summerside.
 // Author: Tharny Elilvannan, McMaster University
-// Last Updated: December 02, 2024
+// Last Updated: December 04, 2024
 // This program uses the SDL, SDL_ttf, and SDL_image libraries.
 
 // Changes by: Meigan Rogers
@@ -15,7 +15,7 @@
 #include <SDL_image.h>
 #include <SDL_ttf.h>
 #else
-//#include <SDL2/SDL.h>
+#include <SDL2/SDL.h>
 #include <SDL2/SDL_timer.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_ttf.h>
@@ -27,6 +27,13 @@
 
 
 int main(int argc, char *argv[]) {
+
+     if (strcmp(argv[1], "--help") == 0) {
+
+            help_commandline();
+            exit(EXIT_SUCCESS);
+
+    } // end of if statement
 
     // initialize SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1) {
@@ -85,7 +92,7 @@ int main(int argc, char *argv[]) {
     // draws the introduction page
     while (runIntro) {
 
-        //SDL_SetWindowResizable(window, SDL_FALSE);
+        SDL_SetWindowResizable(window, SDL_FALSE);
         SDL_SetWindowMouseGrab(window, SDL_TRUE);
         SDL_SetWindowGrab(window, SDL_TRUE);
 
