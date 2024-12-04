@@ -122,7 +122,6 @@ void openMap(SDL_Window *mapWindow) {
 
     } // End of while loop
 
-    SDL_Delay(100);
     // Cleanups and free resources
     SDL_DestroyTexture(imageTexture);
     SDL_DestroyTexture(textTexture);

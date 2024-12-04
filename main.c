@@ -28,6 +28,7 @@
 
 int main(int argc, char *argv[]) {
 
+    // checks for command line help flag
     if (argc != 1) {
 
         if (strcmp(argv[1], "--help") == 0) {
@@ -57,9 +58,11 @@ int main(int argc, char *argv[]) {
 
     // initialize SDL font
     if (TTF_Init() == -1) {
+
         fprintf(stderr, "TTF_Init Error: %s\n", TTF_GetError());
         exit(EXIT_FAILURE);
-    }
+
+    } 
     
     // create the main window
     SDL_Window* window = SDL_CreateWindow("SECRETS OF SUMMERSIDE", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 2000, 1000, SDL_WINDOW_RESIZABLE);
@@ -81,7 +84,7 @@ int main(int argc, char *argv[]) {
 
     } // end of if statement
 
-    //buttons
+    // buttons
     SDL_Rect continueButton = {1390, 875, 345, 80};
     SDL_Rect map = {185, 614, 235, 266};
     SDL_Rect recipe = {739, 180, 273, 364};
@@ -111,7 +114,9 @@ int main(int argc, char *argv[]) {
         while (SDL_PollEvent(&event)) {
 
             if (event.type == SDL_QUIT) {
+
                 runIntro = false;
+
             } // end of if statement
 
             if (event.type == SDL_MOUSEBUTTONDOWN) {
@@ -120,6 +125,7 @@ int main(int argc, char *argv[]) {
                 int y = event.button.y; 
 
                 if (x >= continueButton.x && x <= (continueButton.x + continueButton.w) && y >= continueButton.y && y <= (continueButton.y + continueButton.h)) {
+
                     runIntro = false; 
                     run = true; 
                 
@@ -138,6 +144,7 @@ int main(int argc, char *argv[]) {
         SDL_SetWindowGrab(window, SDL_FALSE);
 
         SDL_RenderClear(renderer);
+
         // draw the button rectangles on the window
         SDL_RenderCopy(renderer, corkboardTexture, NULL, NULL);
         SDL_RenderDrawRect(renderer, &map);
@@ -157,12 +164,14 @@ int main(int argc, char *argv[]) {
             } // end of if statement
 
             if (event.type == SDL_MOUSEBUTTONDOWN) {
+
                 // coordinates of the mouse click
                 int x = event.button.x; 
                 int y = event.button.y; 
                 
                 // if the map was clicked
                 if (x >= map.x && x <= (map.x + map.w) && y >= map.y && y <= (map.y + map.h)) {
+
                     SDL_Window* mapWindow = SDL_CreateWindow("Map View", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
                     SDL_Delay(100); 
                     openMap(mapWindow);
@@ -172,10 +181,12 @@ int main(int argc, char *argv[]) {
                     SDL_PumpEvents();
                     SDL_Delay(2000);
                     break; 
+
                 } // end of if statement
 
                 // if the recipe was clicked
                 if (x >= recipe.x && x <= (recipe.x + recipe.w) && y >= recipe.y && y <= (recipe.y + recipe.h)) {
+
                     SDL_Window *recipeWindow = SDL_CreateWindow("Recipe", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
                     SDL_Delay(100); 
                     openRecipe(recipeWindow);
@@ -185,10 +196,12 @@ int main(int argc, char *argv[]) {
                     SDL_PumpEvents(); 
                     SDL_Delay(2000);
                     break; 
+
                 } // end of if statement
 
                 // if the letter was clicked
                 if (x >= letter.x && x <= (letter.x + letter.w) && y >= letter.y && y <= (letter.y + letter.h)) {
+
                     SDL_Window *letterWindow = SDL_CreateWindow("Letter Clue", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
                     SDL_Delay(100); 
                     Letter(letterWindow);
@@ -198,10 +211,12 @@ int main(int argc, char *argv[]) {
                     SDL_PumpEvents(); 
                     SDL_Delay(2000);
                     break; 
+
                 } // end of if statement
 
                 // if the guess button was clicked
                 if (x >= guessButton.x && x <= (guessButton.x + guessButton.w) && y >= guessButton.y && y <= (guessButton.y + guessButton.h)) {
+
                     checkguess();
                     SDL_DestroyWindow(window);
                     SDL_DestroyRenderer(renderer);
@@ -209,10 +224,12 @@ int main(int argc, char *argv[]) {
                     IMG_Quit();
                     TTF_Quit(); 
                     exit(EXIT_SUCCESS);
+
                 } // end of if statement
 
                 // if the help button was clicked
                 if (x >= helpButton.x && x <= (helpButton.x + helpButton.w) && y >= helpButton.y && y <= (helpButton.y + helpButton.h)) {
+
                     SDL_Window *helpWindow = SDL_CreateWindow("--help", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1000, 800, SDL_WINDOW_RESIZABLE);
                     SDL_Delay(100); 
                     openHelp(helpWindow);
@@ -222,6 +239,7 @@ int main(int argc, char *argv[]) {
                     SDL_PumpEvents(); 
                     SDL_Delay(2000);
                     break; 
+
                 } // end of if statement
 
             } // end of if statement
