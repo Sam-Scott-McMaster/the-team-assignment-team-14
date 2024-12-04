@@ -1,9 +1,17 @@
 Welcome to the Town of Summerside!
 ================================
 
-There's been a murder. As the new detective in town, it's your job to solve the mystery. 
+Jay Wallace, Shaun McIntyre, Glen Richardson and Clayton Moore are all childhood friends. After a decade, they all decided to have a little reunion. The following day, Jay is found dead on the beach!
+
+As the new detective in town, it's your job to solve the mystery. 
 Using the previous detective's notes, piece together the story by investigating the evidence
-board and clicking on the clues to view them. 
+board and clicking on the clues to view them.
+
+Tips
+---------------------------------
+1. Pay careful attention to each clue.
+2. Try to figure out a motive and a timeline.
+3. Have fun!
 
 Gameplay
 --------------------------------
@@ -16,7 +24,7 @@ To exit each clue, either close the window, or click the "Done" button. To make 
 
 The number of attempts will be displayed on the screen.
 
-Additionally, there may be a delay with clicking buttons on certain 
+Additionally, there may be a delay with clicking buttons on certain devices.
 
 Libraries
 -----------------------
