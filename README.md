@@ -20,7 +20,7 @@ person you think committed the crime! But be careful, as you only have 2 attempt
 
 Starting at the introduction page, navigate through the game by clicking on the different clues. 
 
-To exit each clue, either close the window, or click the "Done" button. To make a guess, another window will appear with the three suspect names. Click on the name you believe is the murderer. 
+To exit each clue, click the "Done" button. To make a guess, another window will appear with the three suspect names. Click on the name you believe is the murderer. 
 
 The number of attempts will be displayed on the screen.
 
