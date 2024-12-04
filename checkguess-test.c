@@ -1,3 +1,11 @@
+/* Sachika Saxena and Midhousha Anura, Dec 2024
+ * McMaster University
+ * This function tests the logic of checkguess.c but without the SDL libraries
+ * includes it's own main function (seperate from the main function used for the secrets game)
+ * Parameters - int agrc and char argv[]
+ * Return TYPE - void 
+ * */
+
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
