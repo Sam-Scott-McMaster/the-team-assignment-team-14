@@ -5,7 +5,7 @@
  * It will open a new window, and display the recipe image.
  * The user can exit the clue by clicking the "Done" button.
  * 
- * on mac before executing and compiling: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
+ * only on mac before executing and compiling: export DYLD_FRAMEWORK_PATH=/Library/Frameworks
  * 
  * 
  * */
